@@ -83,7 +83,7 @@ func TestHealth(t *testing.T) {
 	}
 
 	if _, ok := stats["error"]; ok {
-		t.Fatalf("expected error not to be present")
+		t.Fatal("expected error not to be present")
 	}
 
 	if stats["message"] != "It's healthy" {
@@ -95,6 +95,6 @@ func TestClose(t *testing.T) {
 	srv := New()
 
 	if srv.Close() != nil {
-		t.Fatalf("expected Close() to return nil")
+		t.Fatal("expected Close() to return nil")
 	}
 }

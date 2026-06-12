@@ -37,7 +37,7 @@ func (s *Server) corsMiddleware(next http.Handler) http.Handler {
 	})
 }
 
-func (s *Server) HelloWorldHandler(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HelloWorldHandler(w http.ResponseWriter, _ *http.Request) {
 	resp := map[string]string{"message": "Hello World"}
 	jsonResp, err := json.Marshal(resp)
 	if err != nil {
@@ -50,7 +50,7 @@ func (s *Server) HelloWorldHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (s *Server) healthHandler(w http.ResponseWriter, r *http.Request) {
+func (s *Server) healthHandler(w http.ResponseWriter, _ *http.Request) {
 	resp, err := json.Marshal(s.db.Health())
 	if err != nil {
 		http.Error(w, "Failed to marshal health check response", http.StatusInternalServerError)
